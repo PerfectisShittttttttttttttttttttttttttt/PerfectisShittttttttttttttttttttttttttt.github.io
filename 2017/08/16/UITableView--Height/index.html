@@ -93,16 +93,16 @@
 
 
 
-<meta name="description" content="– title：UITableView优化#UITableViewCell高度计算rowHeightUITableView定高需求的表格最好使用 tableView.rowHeight = 30;避免UITableView代理方法多次调用   (UITableViewCell )tableView:(UITableView )tableView cellForRowAtIndexPath:(NSI">
+<meta name="description" content="UITableViewCell高度计算rowHeightUITableView定高需求的表格最好使用 1tableView.rowHeight = 30; 避免UITableView代理方法多次调用 1- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="人间失格">
+<meta property="og:title" content="UITableView优化">
 <meta property="og:url" content="http://yoursite.com/2017/08/16/UITableView--Height/index.html">
 <meta property="og:site_name" content="人间失格">
-<meta property="og:description" content="– title：UITableView优化#UITableViewCell高度计算rowHeightUITableView定高需求的表格最好使用 tableView.rowHeight = 30;避免UITableView代理方法多次调用   (UITableViewCell )tableView:(UITableView )tableView cellForRowAtIndexPath:(NSI">
-<meta property="og:updated_time" content="2017-08-16T07:52:34.000Z">
+<meta property="og:description" content="UITableViewCell高度计算rowHeightUITableView定高需求的表格最好使用 1tableView.rowHeight = 30; 避免UITableView代理方法多次调用 1- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexP">
+<meta property="og:updated_time" content="2017-08-16T08:31:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="人间失格">
-<meta name="twitter:description" content="– title：UITableView优化#UITableViewCell高度计算rowHeightUITableView定高需求的表格最好使用 tableView.rowHeight = 30;避免UITableView代理方法多次调用   (UITableViewCell )tableView:(UITableView )tableView cellForRowAtIndexPath:(NSI">
+<meta name="twitter:title" content="UITableView优化">
+<meta name="twitter:description" content="UITableViewCell高度计算rowHeightUITableView定高需求的表格最好使用 1tableView.rowHeight = 30; 避免UITableView代理方法多次调用 1- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexP">
 
 
 
@@ -136,7 +136,7 @@
 
 
 
-  <title> | 人间失格</title>
+  <title>UITableView优化 | 人间失格</title>
   
 
 
@@ -272,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">UITableView优化</h1>
         
 
         <div class="post-meta">
@@ -319,18 +319,13 @@
       
 
       
-        <p>–</p>
-<h2 id="title：UITableView优化"><a href="#title：UITableView优化" class="headerlink" title="title：UITableView优化"></a>title：UITableView优化</h2><h1 id="UITableViewCell高度计算"><a href="#UITableViewCell高度计算" class="headerlink" title="#UITableViewCell高度计算"></a>#UITableViewCell高度计算</h1><h2 id="rowHeight"><a href="#rowHeight" class="headerlink" title="rowHeight"></a>rowHeight</h2><p>UITableView定高需求的表格最好使用</p>
-<p><pre><code><br>tableView.rowHeight = 30;<br></code></pre><br>避免UITableView代理方法多次调用</p>
-<p><pre><code></code></pre></p>
-<ul>
-<li>(UITableViewCell <em>)tableView:(UITableView </em>)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath<br></li>
-</ul>
+        <h1 id="UITableViewCell高度计算"><a href="#UITableViewCell高度计算" class="headerlink" title="UITableViewCell高度计算"></a>UITableViewCell高度计算</h1><h2 id="rowHeight"><a href="#rowHeight" class="headerlink" title="rowHeight"></a>rowHeight</h2><p>UITableView定高需求的表格最好使用</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tableView.rowHeight = <span class="number">30</span>;</div></pre></td></tr></table></figure>
+<p>避免UITableView代理方法多次调用</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">UITableViewCell</span> *)tableView:(<span class="built_in">UITableView</span> *)tableView cellForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath</div></pre></td></tr></table></figure>
 <p>需要注意的是， 实现了</p>
-<p><pre><code></code></pre></p>
-<ul>
-<li>(CGFloat)tableView:(UITableView <em>)tableView heightForRowAtIndexPath:(NSIndexPath </em>)indexPath<br><br>这个方法之后 <strong>rowHeight</strong>设置会失效，所以这个方法适用于具有多种cell高度的UITableView</li>
-</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">CGFloat</span>)tableView:(<span class="built_in">UITableView</span> *)tableView heightForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath</div></pre></td></tr></table></figure>
+<p>这个方法之后 <strong>rowHeight</strong>设置会失效，所以这个方法适用于具有多种cell高度的UITableView</p>
 <h2 id="estimatedHeight"><a href="#estimatedHeight" class="headerlink" title="estimatedHeight"></a>estimatedHeight</h2><p>这个属性iOS7就出现了，文档是这么描述他的作用的</p>
 <blockquote>
 <p>If the table contains variable height rows, it might be expensive to calculate all their heights when the table loads. Using estimation allows you to defer some of the cost of geometry calculation from load time to scrolling time.</p>
@@ -338,10 +333,7 @@
 </blockquote>
 <p>我们都知道，UITableView继承于UIScrollView，和UIScrollView一样，加载时指定ContentSize才能根据自己的bounds，contentOffSet等属性共同，来计算自己是否可以滑动以及滚动条的长度。而UITableView一开始并不知道自己要填充多少内容，于是去询问dataSource有多少个cell，以及询问delegate每个cell的高度是多少，<strong><em>这样就造成他在加载时候浪费了多余的计算在屏幕外的cell</em></strong>。</p>
 <p>设置预算高度有两种方法</p>
-<p><pre><code><br> tableView.estimatedRowHeight = 44;<br> or</code></pre></p>
-<ul>
-<li>(CGFloat)tableView:(UITableView <em>)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath </em>)indexPath<br></li>
-</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">tableView.estimatedRowHeight = <span class="number">44</span>;</div><div class="line">or </div><div class="line">- (<span class="built_in">CGFloat</span>)tableView:(<span class="built_in">UITableView</span> *)tableView estimatedHeightForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath</div></pre></td></tr></table></figure>
 <p>需要注意的点：<br>1.设置估算高度时，由于UITableView的ContentSize一直在变化，所以会发生滚动条一直在跳动的情况</p>
 
       
@@ -498,7 +490,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title：UITableView优化"><span class="nav-number">1.</span> <span class="nav-text">title：UITableView优化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UITableViewCell高度计算"><span class="nav-number"></span> <span class="nav-text">#UITableViewCell高度计算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#rowHeight"><span class="nav-number">1.</span> <span class="nav-text">rowHeight</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#estimatedHeight"><span class="nav-number">2.</span> <span class="nav-text">estimatedHeight</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#UITableViewCell高度计算"><span class="nav-number">1.</span> <span class="nav-text">UITableViewCell高度计算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#rowHeight"><span class="nav-number">1.1.</span> <span class="nav-text">rowHeight</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#estimatedHeight"><span class="nav-number">1.2.</span> <span class="nav-text">estimatedHeight</span></a></li></ol></li></ol></div>
             
 
           </div>
